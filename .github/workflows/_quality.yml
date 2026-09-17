@@ -1,0 +1,40 @@
+name: Quality Assurance
+
+# This makes the workflow reusable by other workflows
+on:
+  workflow_call:
+
+jobs:
+  static-analysis-and-tests:
+    name: Code Quality & Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      # 1. Spotless: Verifies code formatting
+      - name: Run Spotless
+        run: ./mvnw spotless:check
+
+      # 2. CheckStyle: Enforces coding standards
+      - name: Run CheckStyle
+        run: ./mvnw checkstyle:check
+
+      # 3. PMD: Scans for programming flaws
+      - name: Run PMD
+        run: ./mvnw pmd:check
+
+      # 4. SpotBugs: Looks for bugs in Java bytecode
+      - name: Run SpotBugs
+        run: ./mvnw spotbugs:check
+
+      # 5. Unit Tests: Ensures the core domain logic is intact
+      - name: Run Unit Tests
+        run: ./mvnw clean verify

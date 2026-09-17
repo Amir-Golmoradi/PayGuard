@@ -1,0 +1,18 @@
+name: PayGuard Main Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [ opened, reopened, synchronize ]
+
+jobs:
+  # 1. Always run quality checks on PRs and main branch pushes
+  quality-check:
+    uses: ./.github/workflows/_quality.yml
+
+  # 2. Only build Docker images if pushed to main AND quality checks passed
+  publish-docker:
+    needs: quality-check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/_publish.yml
