@@ -9,9 +9,10 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>PayGuard Platform Parent</name>
+    <name>PayGuard Platform</name>
 
     <modules>
+        <module>payguard-shared</module>
         <module>payguard-proto</module>
         <module>payguard-api-gateway</module>
         <module>payguard-wallet-service</module>
@@ -79,7 +80,7 @@
                         </includes>
 
                         <googleJavaFormat>
-                            <version>1.19.2</version>
+                            <version>1.30.0</version>
                             <style>GOOGLE</style>
                         </googleJavaFormat>
 
