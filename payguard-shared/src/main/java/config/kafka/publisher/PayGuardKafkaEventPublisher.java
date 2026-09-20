@@ -8,13 +8,8 @@ import java.util.concurrent.CompletableFuture;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 
-/**
- * Publishes a validated event using its aggregate ID as the Kafka record key. The returned future
- * must be observed by the caller (or by an outbox relay). Calling this method is not a
- * database/Kafka atomic transaction.
- */
+/** Publishes validated events using their aggregate ID as the Kafka key. */
 public final class PayGuardKafkaEventPublisher {
-
   private final KafkaTemplate<String, Object> kafkaTemplate;
 
   public PayGuardKafkaEventPublisher(KafkaTemplate<String, Object> kafkaTemplate) {

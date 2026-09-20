@@ -4,11 +4,7 @@ import config.kafka.event.EventPayload;
 import config.kafka.event.PayGuardEvent;
 import java.util.Objects;
 
-/**
- * Skips duplicate deliveries. Caller must invoke process inside its service's local database
- * transaction. A thrown handler exception must roll back the marker as well as the business change;
- * do not swallow that exception.
- */
+/** Coordinates event deduplication with the consumer's local transaction. */
 public final class IdempotentEventProcessor {
   private final ProcessedEventStore eventStore;
 
@@ -16,14 +12,11 @@ public final class IdempotentEventProcessor {
     this.eventStore = Objects.requireNonNull(eventStore, "eventStore must not be null");
   }
 
-  /**
-   * @return true when handler ran, false when this consumer handled the event before
-   */
+  /** Returns true when the handler ran, or false when the event was already processed. */
   public boolean process(
       PayGuardEvent<? extends EventPayload> event, String consumerName, Runnable handler) {
     Objects.requireNonNull(event, "event must not be null");
     Objects.requireNonNull(handler, "handler must not be null");
-
     if (consumerName == null || consumerName.isBlank()) {
       throw new IllegalArgumentException("consumerName must not be null or blank");
     }

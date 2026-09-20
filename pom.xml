@@ -201,6 +201,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <version>3.2.0</version>
+                        <inherited>false</inherited>
 
                         <executions>
                             <execution>
@@ -220,9 +221,9 @@
                                         />
 
                                         <available
-                                                file="${project.basedir}/git-hook/pre-commit.sh"
+                                                file="${project.basedir}/git-hook/pre-push.sh"
                                                 type="file"
-                                                property="pre.commit.hook.exists"
+                                                property="pre.push.hook.exists"
                                         />
 
                                         <fail
@@ -231,26 +232,26 @@
                                         />
 
                                         <fail
-                                                message="The file git-hook/pre-commit.sh does not exist."
-                                                unless="pre.commit.hook.exists"
+                                                message="The file git-hook/pre-push.sh does not exist."
+                                                unless="pre.push.hook.exists"
                                         />
 
-                                        <echo message="Installing Synapse Git hooks..."/>
+                                        <echo message="Installing PayGuard Git hooks..."/>
 
                                         <mkdir dir="${project.basedir}/.git/hooks"/>
 
                                         <copy
-                                                file="${project.basedir}/git-hook/pre-commit.sh"
-                                                tofile="${project.basedir}/.git/hooks/pre-commit"
+                                                file="${project.basedir}/git-hook/pre-push.sh"
+                                                tofile="${project.basedir}/.git/hooks/pre-push"
                                                 overwrite="true"
                                         />
 
                                         <chmod
-                                                file="${project.basedir}/.git/hooks/pre-commit"
+                                                file="${project.basedir}/.git/hooks/pre-push"
                                                 perm="755"
                                         />
 
-                                        <echo message="Git pre-commit hook installed successfully."/>
+                                        <echo message="Git pre-push hook installed successfully."/>
                                     </target>
                                 </configuration>
                             </execution>

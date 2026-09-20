@@ -29,7 +29,6 @@ public record PayGuardEvent<T>(
     Objects.requireNonNull(occurredAt, "occurredAt must not be null");
     requireText(producer, "producer must not be blank");
     Objects.requireNonNull(payload, "payload must not be null");
-
     if (schemaVersion <= 0) {
       throw new IllegalArgumentException("schemaVersion must be positive");
     }
