@@ -1,0 +1,10 @@
+.idea
+.env
+.env.*
+!.env.example
+
+# Generated build output
+target/
+
+# Local workflow guidance
+GIT_WORKFLOW_CONVENTION.md
