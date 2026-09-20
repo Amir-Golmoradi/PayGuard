@@ -11,9 +11,8 @@ jobs:
   quality-check:
     uses: ./.github/workflows/_quality.yml
 
-  # 2. Docker images are built only after a successful push to main.
-  # Pull requests intentionally skip this job because they must not publish images.
+  # 2. Build container images on every PR and main push.
+  # This job validates images; it does not publish to an external registry.
   publish-docker:
     needs: quality-check
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/_publish.yml
