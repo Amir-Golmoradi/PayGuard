@@ -17,7 +17,6 @@ public final class PayGuardKafkaTopics {
   /** Emitted by collateral-service on margin calls and liquidation. */
   public static final String COLLATERAL_RISK_EVENTS = "collateral.risk-events";
 
-
   public static final String WALLET_TRANSACTIONS_DLT = WALLET_TRANSACTIONS + ".DLT";
   public static final String LOAN_LIFECYCLE_DLT = LOAN_LIFECYCLE + ".DLT";
   public static final String COLLATERAL_RISK_EVENTS_DLT = COLLATERAL_RISK_EVENTS + ".DLT";

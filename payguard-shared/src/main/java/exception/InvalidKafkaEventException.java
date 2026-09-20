@@ -2,11 +2,11 @@ package exception;
 
 public class InvalidKafkaEventException extends RuntimeException {
 
-    public InvalidKafkaEventException(String message) {
-        super(message);
-    }
+  public InvalidKafkaEventException(String message) {
+    super(message);
+  }
 
-    public InvalidKafkaEventException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public InvalidKafkaEventException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }
