@@ -16,4 +16,4 @@ if ! docker info >/dev/null 2>&1; then
 fi
 
 echo "Running every pull-request workflow locally before push..."
-act pull_request --container-architecture linux/amd64
+act pull_request --container-architecture linux/amd64 --no-cache-server
