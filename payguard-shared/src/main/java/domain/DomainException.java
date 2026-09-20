@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serial;
 import java.net.URI;
 import java.util.Locale;
 
@@ -18,7 +19,7 @@ import java.util.Locale;
  * @since 1.0
  */
 public abstract class DomainException extends RuntimeException {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   protected DomainException() {
     super();
