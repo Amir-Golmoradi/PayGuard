@@ -299,6 +299,29 @@ Install the local Git hook so every `git push` runs the same verification first:
 - Each service currently assumes a single instance; distributed-lock behavior for holds is documented but not yet load-tested at scale.
 
 ---
+## Author
+
+**PayGuard** is designed, architected, and developed independently by:
+
+<div align="center">
+
+### Amir Golmoradi
+
+**Backend Engineer**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Amir--Golmoradi-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Amir-Golmoradi)
+
+</div>
+
+Amir is the sole author, architect, and maintainer of this project — from domain
+modeling and hexagonal architecture design through implementation, infrastructure,
+and documentation. All architectural decisions, ADRs, and engineering trade-offs
+recorded in this repository reflect his individual design work.
+
+For questions, architectural feedback, or collaboration inquiries, please open an
+issue or reach out via GitHub.
+
+---
 
 ## License
 
