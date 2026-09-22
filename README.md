@@ -2,7 +2,7 @@
 
 # PayGuard
 
-**A modular fintech backend for wallet ledgering, loan origination, and digital-collateral risk management.**
+**A privacy-focused, secure modular fintech backend for wallet ledgering, loan origination, and digital-collateral risk management.**
 
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#)
 [![Java](https://img.shields.io/badge/Java-25-orange?style=flat-square&logo=openjdk)](https://openjdk.org)
@@ -24,17 +24,19 @@
 
 ## Overview
 
-PayGuard is a backend system for a single, coherent financial story: a customer locks digital assets as collateral, borrows against them, and pays the loan back — while the system continuously monitors the collateral's value and protects itself automatically if that value falls too far.
+PayGuard is a **privacy-focused** and **security-first** backend system designed for a single, coherent financial story: a customer locks digital assets as collateral, borrows against them, and pays the loan back — while the system continuously monitors the collateral's value and protects itself automatically if that value falls too far.
 
-The project is built as a set of **independently deployable microservices**, each owning its own database and communicating only through explicit contracts — never through a shared schema. It is a deliberate engineering exercise in the domain problems that sit underneath every regulated lending product:
+Built on the principle that sensitive systems should run entirely on your own hardware to keep data completely private[cite: 2], PayGuard is designed to be self-hosted, ensuring you retain absolute control over financial records. The project is constructed as a set of **independently deployable microservices**, each owning its own completely isolated database. They communicate only through explicit contracts — never through a shared schema — bringing the risk of data leakage to absolute zero.
 
-- Double-entry bookkeeping and derived, never-stored balances
-- Loan amortization, repayment waterfalls, and delinquency state machines
-- Loan-to-Value (LTV) risk monitoring, margin calls, and liquidation
-- Idempotent financial operations under concurrent access
-- Service-to-service communication boundaries (REST at the edge, gRPC where latency matters)
+It is a deliberate engineering exercise in the domain problems that sit underneath every regulated lending product, executed with the highest security standards:
 
-It is not a payment-card switch or a full core-banking platform. The scope is intentionally narrow so that every part of it can be built, understood, and defended in depth.
+- **Immutable and privacy-preserving ledgers:** Double-entry bookkeeping and derived, never-stored balances to eliminate data tampering.
+- **Secure and idempotent financial operations:** Guaranteed transaction integrity under concurrent access.
+- Loan amortization, repayment waterfalls, and delinquency state machines built for strict auditability.
+- Loan-to-Value (LTV) risk monitoring, margin calls, and liquidation via protected, automated mechanisms.
+- **Strict service-to-service communication boundaries:** REST at the edge for external clients, and secure gRPC where internal latency and security matter.
+
+It is not a payment-card switch or a full core-banking platform. The scope is intentionally narrow so that every part of the architecture can be built, understood, and defended in depth against security vulnerabilities.
 
 ---
 
