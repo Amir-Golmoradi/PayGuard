@@ -20,7 +20,7 @@ services:
       - oracle_data:/opt/oracle/oradata
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     container_name: payguard-redis
     ports:
       - "${REDIS_PORT}:6379"
