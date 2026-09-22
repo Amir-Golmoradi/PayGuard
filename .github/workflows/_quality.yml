@@ -27,6 +27,10 @@ jobs:
       - name: Run CheckStyle
         run: ./mvnw checkstyle:check
 
+      # Install reactor modules so independent analysis invocations can resolve local artifacts.
+      - name: Install Maven Modules
+        run: ./mvnw -DskipTests -Dpmd.skip=true -Dspotbugs.skip=true install
+
       # 3. PMD: Scans for programming flaws
       - name: Run PMD
         run: ./mvnw pmd:check
