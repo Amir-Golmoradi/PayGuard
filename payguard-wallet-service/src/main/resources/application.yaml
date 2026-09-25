@@ -7,4 +7,4 @@ spring:
     password: ${ORACLE_APP_PASSWORD:payguard_pass}
     driver-class-name: oracle.jdbc.OracleDriver
   jooq:
-    sql-dialect: oracle
+    sql-dialect: default

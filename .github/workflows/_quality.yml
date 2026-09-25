@@ -4,6 +4,9 @@ name: Quality Assurance
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
   static-analysis-and-tests:
     name: Code Quality & Unit Tests
@@ -19,7 +22,7 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 1. Spotless: Verifies code formatting
+      # 1. Spotless: Verifies code formatting without mutating the checkout
       - name: Run Spotless
         run: ./mvnw spotless:check
 
