@@ -4,7 +4,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
@@ -14,8 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class GatewaySecurityConfiguration {
   @Bean
   SecurityFilterChain gatewaySecurity(HttpSecurity http) throws Exception {
-    return http.csrf(AbstractHttpConfigurer::disable)
-        .sessionManagement(
+    return http.sessionManagement(
             sessions -> sessions.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             requests ->
